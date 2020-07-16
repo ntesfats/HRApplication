@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <div th:replace="base :: BootStrapCSS-requiredMetaRags"></div>
+    <title>Adding Employee</title>
+    <style>
+        h5 {
+            text-align: center;
+        }
+        hr {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div th:replace="base :: navbar"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <br><br>
+                <h5>Fill the following form in order to add new employee:</h5>
+                <hr><br>
+
+                <form th:action="@{/listAll}" method="post" th:object="${employee}">
+                    Id: <input type="number" th:field="*{id}">
+                    <span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span> <br> <br>
+                    firstName: <input type="text" th:field="*{firstName}">
+                    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span> <br><br>
+
+                    lastName: <input type="text" th:field="*{lastName}">
+                    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span> <br> <br>
+
+                    startDate: <input type="text" th:field="*{startDate}">
+                    <span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></span> <br> <br>
+                    <br>
+                    <input type="submit" value="Add Employee">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="base :: BootStrapScript"></div>
+
+</body>
+</html>

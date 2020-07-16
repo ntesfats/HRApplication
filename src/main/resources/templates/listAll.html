@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <div th:replace="base :: BootStrapCSS-requiredMetaRags"></div>
+    <title>List All Employees</title>
+    <style>
+        h5 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div th:replace="base :: navbar"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col">
+                <br><br>
+                <h5> <strong> All Employees:</strong> </h5>
+                <div th:each="employee : ${allEmployees}">
+                    <div th:inline="text">
+                       Id: [[${employee.id}]] <br>
+                       First Name: [[${employee.firstName}]] <br>
+                       Last Name: [[${employee.LastName}]] <br>
+                       Start Date: [[${employee.startDate}]] <br>
+                        <hr>
+                    </div>
+                </div>
+                <h5 th:if="${allEmployees.size() == 0}"> There aren't any added employee at this time.</h5>
+                <br><br>
+                <a th:href="@{/addEmployee}">
+                    <button>Add New Employee</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="base :: BootStrapScript"></div>
+</body>
+</html>
